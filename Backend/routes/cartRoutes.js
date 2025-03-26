@@ -1,13 +1,12 @@
-const express = require('express');
-const cart= require('../controllers/cartController');
-
+const express = require("express");
 const router = express.Router();
+const cartController = require("../controllers/cartController");
+const cartAuth = require("../middleware/cartMiddleware"); // Import middleware
 
-router.post('/add', cart.addToCart); //add cart
-router.get('/:userId', cart.getCartItems);
-router.delete('/:userId/:productId', cart.deleteItem);
-router.delete('/:userId', cart.clearCart);
-router.put('/update', cart.updateCartQuantity)
-
+router.post("/add", cartAuth, cartController.addToCart); // Apply middleware
+router.get("/:userId", cartAuth, cartController.getCartItems);
+router.delete("/:userId/:productId", cartAuth, cartController.deleteItem);
+router.delete("/:userId", cartAuth, cartController.clearCart);
+router.put("/update", cartAuth, cartController.updateCartQuantity);
 
 module.exports = router;
