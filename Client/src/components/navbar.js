@@ -1,4 +1,3 @@
-
 import React, { useState , useContext} from "react";
 import { Navbar, Nav, Container, Form, FormControl, Button, Modal, Alert } from "react-bootstrap";
 import { Link, useLocation, useNavigate} from "react-router-dom";
@@ -19,9 +18,8 @@ const NavigationBar = () => {
   const {cart}= useContext(CartContext);
   const { user, handleLogout } = useContext(AuthContext);
 
-  
-  
-  const location =useLocation();
+
+  // const location =useLocation();
   const navigate = useNavigate();
 
   // Handle Search
@@ -63,7 +61,7 @@ const NavigationBar = () => {
  
   return (
 <>
-      {/* Sticky Navbar */}
+      {/* Navbar */}
     <Navbar bg="grey" expand="lg" className="py-2 shadow-sm custom-navbar ">
     <Container>
     <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">

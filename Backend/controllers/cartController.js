@@ -1,5 +1,4 @@
 const Cart = require('../models/cartModel');
-const cartAuth = require('../middleware/cartMiddleware');
 
 //add to cart 
 exports.addToCart = async (req, res) => {

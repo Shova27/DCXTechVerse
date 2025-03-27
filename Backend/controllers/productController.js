@@ -81,7 +81,7 @@ exports.getProductByCategory = async (req, res) => {
   try {
     const category = req.query.category; // Get category from query parameters
 
-    console.log("Received Category:", category); // Debugging
+    // console.log("Received Category:", category); // Debugging
 
     if (!category) {
       return res.status(400).json({ message: "Category is required" });
@@ -101,8 +101,6 @@ exports.getProductByCategory = async (req, res) => {
   }
 };
 
-
- 
 
 // Delete product
 exports.deleteProduct = (req, res) => {
