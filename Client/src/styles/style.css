@@ -1,8 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import './dark.css';
-@import './light.css';
-@import './slider.css';
- 
+
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f4f5f7;

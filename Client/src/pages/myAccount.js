@@ -151,7 +151,10 @@ const MyAccount = () => {
         </div>
 
         <br />
-        <button type="submit" className="btn btn-primary">Save</button>
+        <button type="submit" className="btn btn-primary" disabled={!user}>
+          Save
+        </button>
+
 
         {message && <p className="mt-2" style={{ color: message.toLowerCase().includes("success") ? "green" : "red" }}>{message}</p>}
       </form>
