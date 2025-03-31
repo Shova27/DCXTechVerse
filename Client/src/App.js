@@ -12,6 +12,7 @@ import AuthPage from "./components/authPage";
 import { CartProvider } from "./context/cartContext";
 import SearchResults from "./components/searchResult";
 import FilteredProducts from "./pages/filteredProducts";
+import ProductDetails from "./pages/productDetails";
 
 function App() {
   const [hideSpecialsAndNew, setHideSpecialsAndNew] = useState(false);
@@ -30,6 +31,7 @@ function App() {
               <Route path="/login" element={<AuthPage />} />
               <Route path="/search-result" element={<SearchResults />} />
               <Route path="/filtered-products" element={<FilteredProducts />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
             </Routes>
             <Footer />
           </Router>

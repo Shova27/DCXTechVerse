@@ -1,30 +1,34 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../context/cartContext"; // Import Cart Context
-import { AuthContext } from "../context/authContext"; // Import Auth Context
+import { CartContext } from "../context/cartContext";
+import { AuthContext } from "../context/authContext";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
-  const { user } = useContext(AuthContext); // Get user info
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const [message, setMessage] = useState(""); // State to store the message
-  const [messageColor, setMessageColor] = useState(""); // State for text color
+  const [message, setMessage] = useState("");
+  const [messageColor, setMessageColor] = useState("");
 
   const handleAddToCart = () => {
     if (!user) {
       setMessage("Please login to add items to cart!");
-      setMessageColor("text-danger"); // Red color for error
+      setMessageColor("text-danger");
       setTimeout(() => {
-        setMessage(""); // Clear message after a few seconds
-        navigate("/login"); // Redirect to login page
+        setMessage("");
+        navigate("/login");
       }, 3000);
       return;
     }
     addToCart(product);
     setMessage("Added to cart successfully!");
-    setMessageColor("text-success"); // Green color for success
+    setMessageColor("text-success");
     setTimeout(() => setMessage(""), 3000);
+  };
+
+  const handleProductClick = () => {
+    navigate(`/product/${product._id}`); // Navigate to product details page
   };
 
   return (
@@ -38,12 +42,17 @@ const ProductCard = ({ product }) => {
           src={`http://localhost:5000/${product.productImage}`}
           className="card-img-top"
           alt={product.productName}
-          style={{ width: "100%", height: "200px", objectFit: "contain" }}
+          style={{ width: "100%", height: "200px", objectFit: "contain", cursor: "pointer" }}
+          onClick={handleProductClick} // Navigate on image click
         />
 
         {/* Product Details */}
         <div className="card-body p-2">
-          <h6 className="card-title font-weight-bold text-primary">
+          <h6 
+            className="card-title font-weight-bold text-primary"
+            style={{ cursor: "pointer" }}
+            onClick={handleProductClick} // Navigate on name click
+          >
             {product.productName}
           </h6>
 
@@ -58,7 +67,7 @@ const ProductCard = ({ product }) => {
           {/* Add to Cart Button */}
           <button 
             className="btn btn-primary btn-sm w-100" 
-            onClick={handleAddToCart} // Updated onClick function
+            onClick={handleAddToCart}
           >
             Add to Cart
           </button>
@@ -76,3 +85,4 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
