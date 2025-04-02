@@ -1,4 +1,4 @@
-# DCXTechVerse --Universe Of Tech
+⁶# DCXTechVerse --Universe Of Tech
 # MERN Stack eCommerce Project
 
 ## Overview
@@ -53,7 +53,7 @@ JWT_SECRET=your_secret_key
 #### **Start Backend Server**
 ```bash
 cd backend
-npm start
+node index.js
 ```
 #### **Start Frontend Server**
 ```bash
